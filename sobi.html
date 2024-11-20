@@ -1,0 +1,316 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Contact Us - Dream Wings Studio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ebcceb, #af69af, #800080, #b136b1, #3c023c);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 900;
+            height: 80px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+        }
+
+        /* Center the toggle button in the header */
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            position: absolute;
+            right: 20px; /* Positions the toggle button on the right side */
+            top: 50%; /* Centers vertically */
+            transform: translateY(-50%); /* Adjusts for exact vertical centering */
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+            font-size: 1.2rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: #333;
+            font-size: 1.5em;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #0073e6;
+        }
+
+        .contact-info, .contact-form, .map {
+            width: 100%;
+            padding: 40px;
+            margin: 120px 0 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 600px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards;
+            animation-delay: var(--delay, 0s);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-info { --delay: 0.2s; }
+        .contact-form { --delay: 0.4s; }
+        .map { --delay: 0.6s; }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .contact-form button {
+            padding: 10px;
+            background: #5cb85c;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .contact-form button:hover {
+            background: #4cae4c;
+        }
+
+        .map iframe {
+            width: 100%;
+            max-width: 600px;
+            height: 350px;
+            border: 0;
+        }
+        .social-media {
+    display: flex;
+    gap: 20px;
+    height: 50px;
+}
+
+.social-icon {
+    text-decoration: none;
+    color: #333;
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+    background-color: #ddd;
+}
+
+.social-icon i {
+    color: #333;
+}
+
+/* Customize colors for each icon (optional) */
+.social-icon:nth-child(1) i { color: #3b5998; } /* Facebook */
+.social-icon:nth-child(2) i { color: #00acee; } /* Twitter */
+.social-icon:nth-child(3) i { color: #e4405f; } /* Instagram */
+.social-icon:nth-child(4) i { color: #0077b5; } /* LinkedIn */
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            width: 100%;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                display: none;
+                background: #3c023c;
+                position: fixed;
+                top: 80px;
+                right: 0;
+                width: 200px;
+                height: auto; /* Reduce height */
+                padding: 10px 0; /* Less padding for a compact look */
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                font-size: 1.1rem;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .menu-toggle.active + nav ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center; /* Aligns the menu items in the center */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="https://i.ibb.co/Yy56yNs/logo-removebg-preview.png" class="logo" alt="Logo">
+        <span class="menu-toggle" onclick="toggleMenu()">&#9776;</span>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="learn more.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="infrastrcture.html">Infrastructure</a></li>
+                <li><a href="project.html">Projects</a></li>
+                <li><a href="sobi.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+    
+    <section class="contact-form">
+        <h2>Get in Touch</h2>
+        <form id="contactForm">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="text" name="subject" placeholder="Subject" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <section class="map">
+        <h2>Our Location</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509455!2d144.9537353153183!3d-37.816279979751615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f5d4999%3A0x5045675218cee80!2sMelbourne%20Central!5e0!3m2!1sen!2sau!4v1630935140703!5m2!1sen!2sau" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+<div class="social-media">
+    <a href="https://www.facebook.com" target="_blank" class="social-icon">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.twitter.com" target="_blank" class="social-icon">
+        <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://www.instagram.com" target="_blank" class="social-icon">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.linkedin.com" target="_blank" class="social-icon">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+</div>
+
+
+
+
+    <footer>
+        <p>&copy; 2024 Dream Wings Studio. All rights reserved.</p>
+    </footer>
+    <script>
+        const form = document.getElementById("contactForm");
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+    
+            const formData = {
+                name: form.name.value,
+                email: form.email.value,
+                subject: form.subject.value,
+                message: form.message.value
+            };
+    
+            try {
+                const response = await fetch("http://localhost:3000/send-email", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formData)
+                });
+    
+                if (response.ok) {
+                    alert("Message sent successfully!");
+                    form.reset();
+                } else {
+                    alert("Failed to send message. Please try again.");
+                }
+            } catch (error) {
+                alert("An error occurred. Please try again.");
+            }
+        });
+    </script>
+    
+</body>
+</html>
